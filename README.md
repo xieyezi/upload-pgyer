@@ -22,7 +22,8 @@ node upload-pgyer.js --filepath='xxxx' --apikey='xxxx' --webhook='xxxx' --buildu
  target   |	发送消息的平台 | lark / dingtalk / wechat
 
 
-> 注： 由于钉钉的 `webhook` 必须设置安全校验，这里默认关键词设置为`新的构建任务`.即是：如果你使用的是钉钉平台，那么添加机器人的时候必须设置`keyword`为`新的构建任务`.
+
+注： 由于钉钉的 `webhook` 必须设置安全校验，这里默认关键词设置为`新的构建任务`.即是：如果你使用的是钉钉平台，那么添加机器人的时候必须设置`keyword`为`新的构建任务`.
  ### 预览
 依次为飞书、钉钉、企业微信：
 
