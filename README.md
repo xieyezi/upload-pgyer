@@ -28,6 +28,6 @@ node upload-pgyer.js --filepath='xxxx' --apikey='xxxx' --webhook='xxxx' --buildu
 依次为飞书、钉钉、企业微信：
 
 | ![](./screenshot/lark_success.jpg)  | ![](./screenshot/lark_failed.jpg) |
-| :---------------------------------: | :---------------------------------: | :---------------------------------: | :---------------------------------: |
+| :---------------------------------: | :---------------------------------: |
 | ![](./screenshot/dingtalk_success.jpg)  | ![](./screenshot/dingtalk_failed.jpg) 
 | ![](./screenshot/wechat_success.jpg) | ![](./screenshot/wechat_failed.jpg)                            
