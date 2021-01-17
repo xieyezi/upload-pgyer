@@ -31,3 +31,18 @@ node upload-pgyer.js --filepath='xxxx' --apikey='xxxx' --webhook='xxxx' --buildu
 | :---------------------------------: | :---------------------------------: |
 | ![](./screenshot/dingtalk_success.jpg)  | ![](./screenshot/dingtalk_failed.jpg) 
 | ![](./screenshot/wechat_success.jpg) | ![](./screenshot/wechat_failed.jpg)                            
+
+
+### CI / CD 说明
+
+本工具主要为了实现移动端持续集成功能，你可以将该工具配合其他工具使用，例如: `Jenkins`、`Travis` 等等。
+下面介绍一下如何配合`Jenkins` + `蒲公英` + `飞书`使用.
+
+> Jenkins的安装过程省略。建议使用 `homebrew` 安装.
+
+首先，明确我们想要实现的目标：
+
+`git commit`包含指定指令 -> `Jenkins` 收到更新 -> 远程目标机执行构建操作 -> 上传安装包至蒲公英 -> 目标平台发送通知.
+
+
+
