@@ -44,5 +44,7 @@ node upload-pgyer.js --filepath='xxxx' --apikey='xxxx' --webhook='xxxx' --buildu
 
 `git commit`包含指定指令 -> `Jenkins` 收到更新 -> 远程目标机执行构建操作 -> 上传安装包至蒲公英 -> 目标平台发送通知.
 
+updating.....
+
 
 
