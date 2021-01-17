@@ -1,10 +1,9 @@
-const fs = require('fs')
-const Ora = require('Ora')
-const dayJs = require('dayjs')
-const request = require('request')
+import fs from 'fs'
+import Ora from 'Ora'
+import dayJs from 'dayjs'
+import request from 'request'
 
-const dingding = (apiKey: string, webHook: string, filePath: string, buildUrl: string) => {
-	console.log('11111')
+const dingtalk = (apiKey: string, webHook: string, filePath: string, buildUrl: string, platForm: string) => {
 	const fileIsExist = fs.existsSync(filePath)
 	// check file is Exist
 	if (!fileIsExist) {
@@ -18,7 +17,7 @@ const dingding = (apiKey: string, webHook: string, filePath: string, buildUrl: s
 				msgtype: 'actionCard',
 				actionCard: {
 					title: '新的构建任务',
-					text: `## 新的构建任务\n\n  **构建状态**\n\n 失败 \n\n **失败原因** \n\n Can not find file,plase check filePath. \n\n **任务名称** \n\n [${buildUrl}](${buildUrl}) \n\n **结束时间** \n\n ${dayJs(
+					text: `## 新的构建任务\n\n **构建平台**\n\n ${platForm} \n\n  **构建状态**\n\n 失败 \n\n **失败原因** \n\n Can not find file,plase check filePath. \n\n **任务名称** \n\n [${buildUrl}](${buildUrl}) \n\n **结束时间** \n\n ${dayJs(
 						new Date()
 					).format('YYYY-MM-DD HH:mm:ss')} \n\n`,
 					hideAvatar: '0',
@@ -75,7 +74,7 @@ const dingding = (apiKey: string, webHook: string, filePath: string, buildUrl: s
 						msgtype: 'actionCard',
 						actionCard: {
 							title: '新的构建任务',
-							text: `## 新的构建任务\n\n  **构建状态**\n\n 成功 \n\n **任务名称** \n\n [${buildUrl}](${buildUrl})  \n\n **项目名称** \n\n ${
+							text: `## 新的构建任务\n\n **构建平台**\n\n ${platForm} \n\n **构建状态**\n\n 成功 \n\n **任务名称** \n\n [${buildUrl}](${buildUrl})  \n\n **项目名称** \n\n ${
 								res.data.buildName
 							} \n\n **结束时间** \n\n ${dayJs(new Date()).format('YYYY-MM-DD HH:mm:ss')} \n\n`,
 							hideAvatar: '0',
@@ -104,7 +103,7 @@ const dingding = (apiKey: string, webHook: string, filePath: string, buildUrl: s
 						msgtype: 'actionCard',
 						actionCard: {
 							title: '新的构建任务',
-							text: `## 新的构建任务\n\n  **构建状态**\n\n 失败 \n\n **失败原因** \n\n Upload to Pgyer falied,The reason is: ${
+							text: `## 新的构建任务\n\n  **构建平台**\n\n ${platForm} \n\n **构建状态**\n\n 失败 \n\n **失败原因** \n\n Upload to Pgyer falied,The reason is: ${
 								res.message
 							} \n\n **任务名称** \n\n [${buildUrl}](${buildUrl}) \n\n **结束时间** \n\n ${dayJs(new Date()).format(
 								'YYYY-MM-DD HH:mm:ss'
@@ -129,4 +128,4 @@ const dingding = (apiKey: string, webHook: string, filePath: string, buildUrl: s
 		}
 	}
 }
-export default dingding
+export default dingtalk

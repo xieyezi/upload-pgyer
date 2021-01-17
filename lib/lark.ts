@@ -1,9 +1,9 @@
-const fs = require('fs')
-const Ora = require('Ora')
-const dayJs = require('dayjs')
-const request = require('request')
+import fs from 'fs'
+import Ora from 'Ora'
+import dayJs from 'dayjs'
+import request from 'request'
 
-const lark = (apiKey: string, webHook: string, filePath: string, buildUrl: string) => {
+const lark = (apiKey: string, webHook: string, filePath: string, buildUrl: string, platForm: string) => {
 	const fileIsExist = fs.existsSync(filePath)
 	// check file is Exist
 	if (!fileIsExist) {
@@ -28,6 +28,13 @@ const lark = (apiKey: string, webHook: string, filePath: string, buildUrl: strin
 								content: ''
 							},
 							fields: [
+								{
+									is_short: true,
+									text: {
+										tag: 'lark_md',
+										content: `**构建平台:**\n${platForm}`
+									}
+								},
 								{
 									is_short: false,
 									text: {
@@ -119,7 +126,6 @@ const lark = (apiKey: string, webHook: string, filePath: string, buildUrl: strin
 		const spinner = Ora({
 			text: `${filePath} is uploading....\n`
 		})
-
 		const uploadOptions = {
 			method: 'POST',
 			url: 'https://www.pgyer.com/apiv2/app/upload',
@@ -165,6 +171,20 @@ const lark = (apiKey: string, webHook: string, filePath: string, buildUrl: strin
 										content: ''
 									},
 									fields: [
+										{
+											is_short: true,
+											text: {
+												tag: 'lark_md',
+												content: `**构建平台:**\n${platForm}`
+											}
+										},
+										{
+											is_short: false,
+											text: {
+												tag: 'lark_md',
+												content: ''
+											}
+										},
 										{
 											is_short: true,
 											text: {
@@ -270,6 +290,20 @@ const lark = (apiKey: string, webHook: string, filePath: string, buildUrl: strin
 											is_short: true,
 											text: {
 												tag: 'lark_md',
+												content: `**构建平台:**\n${platForm}`
+											}
+										},
+										{
+											is_short: false,
+											text: {
+												tag: 'lark_md',
+												content: ''
+											}
+										},
+										{
+											is_short: true,
+											text: {
+												tag: 'lark_md',
 												content: '**构建状态:**\n构建失败'
 											}
 										},
@@ -284,7 +318,7 @@ const lark = (apiKey: string, webHook: string, filePath: string, buildUrl: strin
 											is_short: true,
 											text: {
 												tag: 'lark_md',
-												content: `**失败原因:**\n Upload to Pgyer falied,The reason is: ${res.message}`
+												content: `**失败原因:**\n Upload to Pgyer falied,The reason is:\n ${res.message}`
 											}
 										},
 										{
