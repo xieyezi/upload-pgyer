@@ -40,7 +40,7 @@ node upload-pgyer.js --filepath='xxxx' --apikey='xxxx' --webhook='xxxx' --buildu
 
 下面介绍一下如何配合`Jenkins` + `蒲公英` + `飞书` 实现 `android` 端 `CI` 流程的使用.
 
-> Jenkins的安装过程省略。建议使用 `homebrew` 安装.
+> Jenkins的安装过程省略. 建议使用 `homebrew` 安装.
 
 首先，明确我们想要实现的目标：
 
